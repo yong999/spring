@@ -35,7 +35,7 @@ public class Student {
     }
 
     public int test(String str){
-        System.out.println("这是执行方法。。。。");
-        return str.length();
+        System.out.println("这是执行方法。。。。"+str);
+        return 1000;
     }
 }

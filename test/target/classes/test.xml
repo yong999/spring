@@ -11,11 +11,15 @@
         <!--<property name="name" value="小王" ></property>-->
     </bean>
     <bean id="aopTest" class="com.test.pojo.AopTest"></bean>
+    <bean id="aopAdvisor" class="com.test.pojo.AopAdvice"></bean>
     <aop:config>
         <aop:pointcut id="test" expression="execution(* com.test.pojo.Student.test(String))"/>
+        <!--这是AOP
         <aop:aspect ref="aopTest" >
-            <aop:before method="before" pointcut-ref="test"></aop:before>
-            <aop:after-returning method="after" pointcut-ref="test"></aop:after-returning>
-        </aop:aspect>
+          &lt;!&ndash;  <aop:before method="before" pointcut-ref="test"></aop:before>
+            <aop:after-returning method="after" pointcut-ref="test"></aop:after-returning>&ndash;&gt;
+            <aop:around method="around" pointcut-ref="test"></aop:around>
+        </aop:aspect>-->
+        <aop:advisor advice-ref="aopAdvisor" pointcut-ref="test"></aop:advisor>
     </aop:config>
 </beans>

@@ -8,6 +8,7 @@ public class Main {
     public static void main(String[] args) {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("test.xml");
         Student stu = context.getBean(Student.class);
+        //System.out.println();
         System.out.println(stu.test("123"));
         //Student stu2 = context.getBean(Student.class);
         //System.out.println(stu);
