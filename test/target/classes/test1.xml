@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd
+    ">
+    <bean id="student" class="com.test.pojo.Student" ><!--init-method="init" destroy-method="destory"-->
+        <!--<property name="name" value="小王" ></property>-->
+    </bean>
+    <bean id="aopTest" class="com.test.pojo.AopTest"></bean>
+    <aop:config>
+        <aop:pointcut id="test" expression="execution(* com.test.pojo.Student.test(String))"/>
+        <aop:aspect ref="aopTest" >
+            <aop:before method="before" pointcut-ref="test"></aop:before>
+            <aop:after-returning method="after" pointcut-ref="test"></aop:after-returning>
+        </aop:aspect>
+    </aop:config>
+</beans>
